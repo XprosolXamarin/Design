@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Design.Views.CheckoutPage"
+             Title="Checkout">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="search" Icon="searchIcon.png" Priority="0" Order="Primary" Command="{Binding SearchCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="20">
+
+                <!-- start TIMELINE BUBBLES -->
+                <StackLayout Orientation="Horizontal" Spacing="0" Padding="10, 0">
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD">
+                        <Frame BackgroundColor="{StaticResource NormalColor}" CornerRadius="50"/>
+                    </Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#DDDDDD" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD"/>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <BoxView BackgroundColor="#DDDDDD" HeightRequest="1"/>
+                    </StackLayout>
+                    <Frame BackgroundColor="White" WidthRequest="20" HeightRequest="20" CornerRadius="50" Padding="7" BorderColor="#DDDDDD"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Address" TextColor="Black"  HorizontalOptions="StartAndExpand"/>
+                    <Label Text="Payments" TextColor="#707070"  HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Summery" TextColor="#707070"  HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <!-- end TIMELINE BUBBLES -->
+
+                <!-- start TICK WITCH TEXT -->
+                <StackLayout Orientation="Horizontal" Margin="0, 20">
+                    <!--<Frame CornerRadius="50" WidthRequest="12" HeightRequest="12" Padding="5" BackgroundColor="#FA4248">
+                        <Image Source="tick.png" Aspect="AspectFit"/>
+                    </Frame>-->
+                    <CheckBox Color="{StaticResource NormalColor}" IsChecked="True"/>
+                    <Label Text="Billing address is the same as delivery" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" FontFamily="ThemeFont"/>
+                </StackLayout>
+                <!-- end TICK WITCH TEXT -->
+
+                <!-- start ADDRESS -->
+                <Label Text="Street1" TextColor="#707070"  HorizontalOptions="FillAndExpand"/>
+                <Entry Placeholder="12, Bay brook" TextColor="Black" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+
+                <Label Text="Street2" TextColor="#707070" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+                <Entry Placeholder="Sharps Rd." TextColor="Black" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+
+                <Label Text="City" TextColor="#707070" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+                <Entry Placeholder="Keilor East" TextColor="Black" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="State" TextColor="#707070" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+                        <Entry Placeholder="Melbourne" TextColor="Black" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="Country" TextColor="#707070" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+                        <Entry Placeholder="Australia" TextColor="Black" HorizontalOptions="FillAndExpand" FontFamily="ThemeFont"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- end ADDRESS -->
+
+                <!-- start BOTTOM BUTTONS -->
+                <StackLayout Orientation="Horizontal" Spacing="30">
+                    <Button Text="Back" TextColor="Black" CornerRadius="30" BorderWidth="1" BackgroundColor="Transparent" BorderColor="#FA4248" HorizontalOptions="FillAndExpand" Command="{Binding CheckoutCommand}" CommandParameter="pop" FontFamily="ThemeFont"/>
+                    <Button Text="Next" TextColor="White" CornerRadius="30" BorderWidth="1" BackgroundColor="#FA4248" HorizontalOptions="FillAndExpand" Command="{Binding CheckoutCommand}" CommandParameter="pushPayment" FontFamily="ThemeFont"/>
+                </StackLayout>
+                <!-- end BOTTOM BUTTONS -->
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

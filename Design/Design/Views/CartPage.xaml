@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Design.Views.CartPage"
+             Title="Shopping Cart">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="search" Icon="searchIcon.png" Priority="0" Order="Primary" Command="{Binding SearchCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="20, 10">
+                <ListView ItemsSource="{Binding orderDetails.orderedProducts}" HasUnevenRows="True" SeparatorVisibility="None" SelectionMode="None" x:Name="cartItemsList" HeightRequest="{Binding height, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid Padding="0, 10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="40"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- start COLUMN 1 Listview -->
+                                        <Frame Grid.RowSpan="2" Grid.Column="0" CornerRadius="20" Padding="0" BackgroundColor="White" BorderColor="#707070"></Frame>
+                                        <!-- end COLUMN 1 Listview -->
+
+                                        <!-- start COLUMN 2 Listview -->
+                                        <StackLayout Grid.RowSpan="2" Grid.Column="1" Orientation="Vertical" Padding="10, 0, 0, 0">
+                                            <Label Text="{Binding itemTitle}" FontFamily="ThemeFont" TextColor="Black" FontSize="Small"/>
+                                            <Label Text="{Binding itemCategory}" FontFamily="ThemeFont" TextColor="#707070" FontSize="Micro"/>
+                                            <Frame CornerRadius="20" BackgroundColor="#F0F0F0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="5, 0">
+                                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                                    <Label Text="+" FontFamily="ThemeFont" FontSize="Title" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Padding="5, 0">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.IncreaseQtyCommand}" CommandParameter="{Binding .}"/>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                    <Label Text="{Binding purchasedQty, Mode=TwoWay}" FontFamily="ThemeFont" FontSize="Small" VerticalOptions="CenterAndExpand"/>
+                                                    <Label Text="-" FontSize="Title" FontFamily="ThemeFont" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Padding="10, 0">
+                                                        <Label.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.DecreaseQtyCommand}" CommandParameter="{Binding .}"/>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
+                                                </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                        <!-- end COLUMN 2 Listview -->
+
+                                        <!-- start COLUMN 3 Listview -->
+                                        <StackLayout Grid.RowSpan="2" Grid.Column="2">
+                                            <Label TextColor="{StaticResource NormalColor}" FontFamily="ThemeFont">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <FormattedString.Spans>
+                                                            <Span Text="RS"/>
+                                                            <Span Text="{Binding itemPrice}"/>
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Frame BackgroundColor="{StaticResource NormalColor}" CornerRadius="17" Padding="13" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand">
+                                                <ImageButton BackgroundColor="Transparent" Source="bin.png" WidthRequest="20" Aspect="AspectFit" Command="{Binding Path=BindingContext.RemoveItemFromCartCommand}" CommandParameter="{Binding .}"/>
+                                            </Frame>
+                                        </StackLayout>
+                                        <!-- end COLUMN 3 Listview -->
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- start PURCHASE DETAILS -->
+
+                <Label Text="Order Total" FontFamily="ThemeFont" TextColor="Black" HorizontalOptions="StartAndExpand" Margin="0, 0, 0, 10"/>
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Sub Total" FontSize="Small"  HorizontalOptions="Start" TextColor="#2C2C2C"/>
+                        <Frame HorizontalOptions="FillAndExpand" HeightRequest="1" VerticalOptions="CenterAndExpand" BackgroundColor="#E9E9E9" Padding="0"/>
+                        <Label FontSize="Small" FontFamily="ThemeFontBold" TextColor="#2C2C2C">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="RS: "/>
+                                        <Span Text="{Binding orderDetails.subTotal}"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="0, 20, 0, 0">
+                        <Label Text="Shipping" FontSize="Small" FontFamily="{Binding ThemeFont}" HorizontalOptions="Start" TextColor="#2c2c2c"/>
+                        <Frame HorizontalOptions="FillAndExpand" HeightRequest="1" VerticalOptions="CenterAndExpand" BackgroundColor="#E9E9E9" Padding="0"/>
+                        <Label FontSize="Small" FontFamily="ThemeFontBold" TextColor="#2c2c2c">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="RS: "/>
+                                        <Span Text="{Binding orderDetails.shipping}"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <Label TextColor="#2c2c2c" HorizontalOptions="CenterAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Total " FontFamily="ThemeFontBold" FontSize="Large"/>
+                                    <Span Text="RS: " FontFamily="ThemeFontBold" FontSize="Small"/>
+                                    <Span Text="{Binding orderDetails.total}" FontFamily="ThemeFontBold" FontSize="Large"/>
+                                    <Span Text="/-" FontFamily="ThemeFontBold" FontSize="Large"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <!-- end PURCHASE DETAILS -->
+
+                <!-- start VOUCHER CODE SECTION -->
+                <Frame BackgroundColor="White" CornerRadius="30" Padding="15, 0, 0, 0" BorderColor="#707070">
+                    <StackLayout Orientation="Horizontal">
+                        <Entry Placeholder="Enter Voucher Code" HorizontalOptions="FillAndExpand" />
+                        <Button Text="Apply" BackgroundColor="Transparent" />
+                    </StackLayout>
+                </Frame>
+                <Button Text="CHECKOUT" BackgroundColor="{StaticResource NormalColor}" CornerRadius="30" TextColor="White" HorizontalOptions="CenterAndExpand" Margin="0, 20" Padding="30, 0" Command="{Binding CheckoutCommand}" CommandParameter="pushCheckout"/>
+                <!-- end VOUCHER CODE SECTION -->
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

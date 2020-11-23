@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Design.Views.ProfilePage"
+              xmlns:Helpers="clr-namespace:Design.Helpers"
+             Title="Account"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="search" Icon="searchIcon.png" Priority="0" Order="Primary" Command="{Binding SearchCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Padding="20" ColumnSpacing="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="95"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#DCDCDC" CornerRadius="100"></Frame>
+
+            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                <Label TextColor="Black" FontFamily="ThemeFont" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Jameson Dunn" FontSize="Medium"/>
+
+                                <Span Text="jamesondunn@gmail.com" FontSize="Small"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+
+            <TableView Grid.Row="1" Grid.ColumnSpan="2" Intent="Settings" Margin="0, 20, 0, 0">
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell>
+                            <StackLayout Padding="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="pushEditProfile" />
+                                </StackLayout.GestureRecognizers>
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                        <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.FileEdit},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit" />
+                                    </Frame>
+                                    <Label Text="Edit Profile" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center" />
+                                    <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="pushShippingAddress" />
+                                </StackLayout.GestureRecognizers>
+                                <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                    <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.LocationEnter},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit"/>
+                                </Frame>
+                                <Label Text="Shopping Address" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="pushWishList" />
+                                </StackLayout.GestureRecognizers>
+                                <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                    <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.HeartMultiple},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit"/>
+                                </Frame>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                    <Label Text="Wishlist" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                    <Frame BackgroundColor="{StaticResource NormalColor}" CornerRadius="3" Padding="7, 2" Margin="5, 0" VerticalOptions="CenterAndExpand">
+                                        <Label Text="new" FontFamily="ThemeFont" TextColor="White" FontSize="Micro"/>
+                                    </Frame>
+                                </StackLayout>
+                                <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="pushOrderHistory" />
+                                </StackLayout.GestureRecognizers>
+                                <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                    <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.Clock},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit"/>
+                                </Frame>
+                                <Label Text="Order History" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="pushUserTrackOrder" />
+                                </StackLayout.GestureRecognizers>
+                                <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                    <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.Trackpad},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit"/>
+                                </Frame>
+                                <Label Text="Track Order" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="pushCards" />
+                                </StackLayout.GestureRecognizers>
+                                <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                    <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.Card},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit"/>
+                                </Frame>
+                                <Label Text="Cards" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="pushNotifications" />
+                                </StackLayout.GestureRecognizers>
+                                <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                    <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.NotificationClearAll},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit"/>
+                                </Frame>
+                                <Label Text="Notification" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding NavigationCommand}" CommandParameter="Logout" />
+                                </StackLayout.GestureRecognizers>
+                                <Frame VerticalOptions="CenterAndExpand" BackgroundColor="#FDC4C6" Padding="5" CornerRadius="5">
+                                    <Image Source="{
+                                                        FontImage FontFamily=UserIcon,
+                                                        Glyph={x:Static  Helpers:IconFonts.Logout},
+                                                        Size=20, Color=#FA4248}" Aspect="AspectFit"/>
+                                </Frame>
+                                <Label Text="Logout" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                                <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <!--<ScrollView >
+                <StackLayout Padding="0, 20">
+                    <StackLayout Orientation="Horizontal" Spacing="15">
+                        <ImageButton BackgroundColor="Transparent" Source="tempIconUserAccountPage.PNG"/>
+                        <Label Text="Edit Profile" HorizontalOptions="StartAndExpand" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                        <Label Text=">" HorizontalOptions="End" TextColor="Black" FontFamily="ThemeFont" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

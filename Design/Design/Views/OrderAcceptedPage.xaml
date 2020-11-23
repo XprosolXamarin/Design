@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Design.Views.OrderAcceptedPage"
+             Title="Checkout">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="search" Icon="searchIcon.png" Priority="0" Order="Primary" Command="{Binding SearchCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20, 30">
+                <Image Source="orderAccepted.png" Aspect="AspectFit"/>
+                <Label Text="Order Accepted" TextColor="Black" FontSize="Medium"  Padding="0, 10" HorizontalOptions="CenterAndExpand"/>
+                <Label TextColor="Black" FontSize="Small" FontFamily="ThemeFont" Padding="60, 10" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Your Order Number"/>
+                                <Span Text=" "/>
+                                <Span Text="{Binding _order.orderNum}"/>
+                                <Span Text=" "/>
+                                <Span Text="Has Placed"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button BackgroundColor="{StaticResource NormalColor}" TextColor="White" FontFamily="ThemeFontBold" Text="Track Order" CornerRadius="30" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Command="{Binding NavigationCommand}" CommandParameter="popToRootAndPushTrackOrder"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

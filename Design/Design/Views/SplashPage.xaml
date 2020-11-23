@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Design.MainPage" BackgroundColor="{StaticResource NormalColor}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+
+
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Text="WELCOME"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               TextColor="White"
+               FontSize="Medium"/>
+        
+        
+        <Image Grid.Row="1"
+               Source="Logo.png"
+               HeightRequest="300"
+               WidthRequest="300"
+               HorizontalOptions="EndAndExpand"
+               />
+        <StackLayout Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="SUPERSTORE"
+                   TextColor="White" 
+                   CharacterSpacing="5"
+                   FontSize="Medium"/>
+            <Label Text="UI KIT"
+                   TextColor="White" 
+                   CharacterSpacing="5"
+                   HorizontalOptions="CenterAndExpand"
+                   />
+
+        </StackLayout>
+        <Label Text="Start Shopping" 
+               TextColor="White"
+               FontSize="Medium"
+               Grid.Row="3"
+               HorizontalOptions="Center"
+              />
+    </Grid>
+</ContentPage>

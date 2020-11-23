@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Design.Views.CategoryPage"
+              Title="Category">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="search" Icon="searchIcon.png" Priority="1" Order="Primary" Command="{Binding SearchCommand}" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding categoryList}"
+                      HasUnevenRows="True"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand"
+                      BackgroundColor="White"
+                      ItemSelected="ListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView>
+                            <StackLayout Padding="0" Margin="12" Orientation="Horizontal">
+                                <Frame CornerRadius="10" BorderColor="#AEAEAE" Padding="0" HeightRequest="100" WidthRequest="100" BackgroundColor="#808080">
+                                </Frame>
+                                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" Padding="15,0,0,0">
+                                    <Label Text="{Binding title}"  FontSize="Medium" TextColor="Black"/>
+                                    <Label Text="{Binding noOfItems, StringFormat='{0:F0} Items'}"  FontSize="Small" TextColor="Black"/>
+                                </StackLayout>
+                                <Label Text=">" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

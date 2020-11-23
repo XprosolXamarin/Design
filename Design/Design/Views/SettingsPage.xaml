@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Design.Views.SettingsPage"
+               xmlns:Helpers="clr-namespace:Design.Helpers"
+             Title="Settings">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="search" Icon="searchIcon.png" Priority="0" Order="Primary" Command="{Binding SearchCommand}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <Label Text="Your App Settings" FontSize="Medium" TextColor="Black" Margin="5,20,0,0"/>
+
+
+        <StackLayout Margin="5,20,0,0">
+            <Label Text="Notifications"  TextColor="Black"  HorizontalOptions="Start" FontAttributes="Bold" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Receive notification on latest offers and store updates" HorizontalOptions="Start" TextColor="Black"
+                                      WidthRequest="200" />
+                <Switch IsToggled="True"  HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Margin="5,20,0,0">
+            <Label Text="Popups"  TextColor="Black"  HorizontalOptions="Start" FontAttributes="Bold" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Disable all popups and adverts form third party vendors" HorizontalOptions="Start" TextColor="Black"
+                                      WidthRequest="200" />
+                <Switch IsToggled="True"  HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Margin="5,20,0,0">
+            <Label Text="Order History"  TextColor="Black"  HorizontalOptions="Start" FontAttributes="Bold" FontSize="Medium" />
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Keep your order history on the app unless manually removed" HorizontalOptions="Start" TextColor="Black"
+                                      WidthRequest="200" />
+                <Switch IsToggled="True"  HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+        <Button Text="Update settings" BackgroundColor="{StaticResource NormalColor}" CornerRadius="30" Margin="5,20,5,5" TextColor="White" />
+
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:io="clr-namespace:System.IO;assembly=mscorlib" xmlns:ViewModels="clr-namespace:Design.ViewModels"
+            x:Class="Design.Views.HomePage"
+             Title="Discover"
+            BarBackgroundColor="White"
+            BarTextColor="#2c2c2c"
+             >
+    
+    
+    <ContentPage Title="All">
+        <ContentPage.BindingContext>
+            <ViewModels:ProductViewModel />
+        </ContentPage.BindingContext>
+        <ScrollView>
+            <CollectionView x:Name="burgerList" Margin="0,40,0,0" Grid.Row="1" ItemsSource="{Binding Burgers}" SelectionMode="Single" 
+                        SelectedItem="{Binding SelectedBurger}" VerticalScrollBarVisibility="Never" 
+                        SelectionChangedCommand="{Binding SelectionCommand}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20" HorizontalItemSpacing="20" Span="2"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" BackgroundColor="White" WidthRequest="145" HeightRequest="160">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Aspect="AspectFill" Source="{Binding Image}" Margin="10" WidthRequest="125" HeightRequest="110" 
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Label Grid.Row="1" Text="{Binding Name}" TextColor="#F9B522" FontFamily="ThemeFont" 
+                               VerticalOptions="End" HorizontalOptions="Start"/>
+                            <Label Grid.Row="1" Text="{Binding Price, StringFormat='${0}'}" TextColor="Black" FontFamily="ThemeFont"
+                               VerticalOptions="End" HorizontalOptions="End"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.Footer>
+                    <StackLayout Orientation="Horizontal" >
+                        <Label Text="No Filters Applied" FontSize="Large" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                        <Button CornerRadius="30" Text="Filter" BackgroundColor="{StaticResource NormalColor}" HorizontalOptions="CenterAndExpand" WidthRequest="150"/>
+
+                    </StackLayout>
+                   
+                </CollectionView.Footer>
+            </CollectionView>
+            
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="Man">
+        <ContentPage.Content>
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="All" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Man" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Women" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Best Seller" TextColor="Black" FontSize="Large" Margin="30,0,0,0"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Women">
+        <ContentPage.Content>
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="All" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Man" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Women" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Best Seller" TextColor="Black" FontSize="Large" Margin="30,0,0,0"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Best Seller">
+        <ContentPage.Content>
+            <StackLayout Orientation="Horizontal" >
+                <Label Text="All" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Man" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Women" TextColor="Black" FontSize="Large" Margin="30,0,0,0" />
+                <Label Text="Best Seller" TextColor="Black" FontSize="Large" Margin="30,0,0,0"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+</TabbedPage>
